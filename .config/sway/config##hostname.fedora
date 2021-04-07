@@ -23,7 +23,8 @@ set $menu_alt dmenu_path | dmenu | xargs swaymsg exec --
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 output * bg /usr/share/backgrounds/default.png fill
-output DP-1 mode 2560x1440@164.056000Hz adaptive_sync off
+output eDP-1 pos 0 140
+output DP-1 mode 2560x1440@143.912003Hz adaptive_sync off pos 1920 0
 output DP-2 disable
 # Configure border style <normal|1pixel|pixel xx|none|pixel>
 default_border pixel 1
