@@ -237,6 +237,8 @@ for_window [instance="origin.exe"] floating enable
 for_window [instance="fifaconfig.exe"] floating enable
 for_window [class="Xbindkeys_config"] floating enable
 for_window [app_id="firefox" title="^Picture-in-Picture$"] floating enable, sticky enable, resize set width 640px height 360px, move position 877 450
+for_window [title="Picture in picture"] floating enable, sticky enable, resize set width 640px height 360px, move position 1800 1000, no_focus
+for_window [app_id="Vivaldi-stable" title="^Vivaldi Settings:.*"] floating enable, resize set width 834px height 864px
 for_window [app_id="mpv"] floating enable, sticky enable, resize set width 640px height 360px, move position 1800 1000, no_focus
 # https://github.com/ValveSoftware/steam-for-linux/issues/1040
 for_window [class="^Steam$" title="Steam - News"] floating enable
