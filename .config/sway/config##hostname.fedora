@@ -19,13 +19,14 @@ set $bemenu bemenu -i --nb "#3f3f3f" --nf "#dcdccc" --fn "pango:DejaVu Sans Mono
 # on the original workspace that the command was run on.
 set $menu dmenu_path | j4-dmenu-desktop --dmenu='$bemenu' --term=$term | xargs swaymsg exec --
 set $menu_alt dmenu_path | dmenu | xargs swaymsg exec --
+
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 output * bg /usr/share/backgrounds/default.png fill
 output eDP-1 pos 0 140
 output DP-1 mode 2560x1440@143.912003Hz adaptive_sync off pos 1920 0
-output DP-2 disable
+
 # Configure border style <normal|1pixel|pixel xx|none|pixel>
 default_border pixel 1
 default_floating_border normal
@@ -85,6 +86,10 @@ bindsym $mod+Shift+s exec grim -g "$(slurp)" - | wl-copy
 bindsym $mod+Shift+w exec grim -g "$(slurp)" - | swappy -f -
 bindsym $mod+Scroll_lock exec grim $(xdg-user-dir PICTURES)/Screenshots/$(date +%F_%H-%M-%S+'_grim.png'); exec notify-send 'Whole screenshot saved to ~/Pictures/Screenshots'
 bindsym $mod+Shift+Scroll_lock exec grim - | wl-copy
+
+# Toggle touchpad
+bindsym XF86Display input type:touchpad events toggle enabled disabled
+
 # Gaps control keybinds
 
 bindsym $mod+Shift+d gaps inner current set 0; gaps outer current set 0
@@ -191,6 +196,17 @@ bindsym $mod+Shift+5 move container to workspace $ws5; workspace $ws5
 bindsym $mod+Shift+6 move container to workspace $ws6; workspace $ws6
 bindsym $mod+Shift+7 move container to workspace $ws7; workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
+
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+bindsym XF86MonBrightnessUp exec brightnessctl set +5%
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86Search exec bemenu-run
 
 # Open applications on specific workspaces
 assign [title=".*Discord.*"] $ws2
